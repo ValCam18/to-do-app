@@ -1,11 +1,91 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <title>TO-DO LIST</title>
 </head>
 <body>
-    
+    <div class = "container">
+        <h1>TO - DO LIST</h1>
+        <div class = "grid">
+
+            <!-- Aquí va el contenido principal -->
+            <main>
+                <!-- Barra de búsqueda, filtrar por categoría y botón de añadir nueva tarea -->
+                 <section>
+                    <form id="task-search">
+                       <input type="text" id="search-input" placeholder="Buscar tarea...">
+                       <select id="category-select">
+                           <option value="">Seleccionar...</option>
+                           <option value="">Categoría 1</option>
+                           <option value="">Categoría 2</option>
+                           <option value="">Categoría 3</option>
+                       </select>
+                    </form>
+                    <button id="button-add-task"  type="submit">Añadir nueva tarea</button>
+                 </section>
+
+                 <section>
+                    <!-- Filtros-->
+                    <div class="filter-buttons">
+                        <button class="filter-button">Todas</button>
+                        <button class="filter-button">Pendientes</button>
+                        <button class="filter-button">Realizadas</button>
+                    </div>
+
+                    <!-- Lista de tareas-->
+                    <ul class="task-list">
+                        <li class="task-item">
+                            <span>
+                                <input type="checkbox" id="task-1">
+                                <label for="task-1">Ejemplo tarea 1</label>
+                                <span class="category-tag">Categoría 1</span>
+                            </span>
+                            <span class="task-actions">
+                                <button id="button-edit-task">Editar</button>
+                                <button id="button-delete-task">Eliminar</button>
+                            </span>
+                        </li>
+
+                        <li class="task-item">
+                            <span>
+                                <input type="checkbox" id="task-2">
+                                <label for="task-2">Ejemplo tarea 2</label>
+                                <span class="category-tag">Categoría 2</span>
+                            </span>
+                            <span class="task-actions">
+                                <button id="button-edit-task">Editar</button>
+                                <button id="button-delete-task">Eliminar</button>
+                            </span>
+                        </li>
+                    </ul>
+                    <button id="button-tachar-task">Tachar todas las tareas</button>
+                 </section>
+            </main>
+
+            <!-- Aquí va el contenido lateral de categorías -->
+            <aside>
+                <section>
+                    <h2>Categorías</h2>
+                    <form id="category-form">
+                        <input type="text" id="category-input" placeholder="Añadir categoría...">
+                        <button id="button-add-category" type="submit">Añadir</button>
+                        <input type="color" id="category-color" value="">
+                    </form> 
+                    <ul>
+                        <li class="category-item">Categoría 1 <button id="button-delete-category">Eliminar</button></li>
+                        <li class="category-item">Categoría 2 <button id="button-delete-category">Eliminar</button></li>
+                        <li class="category-item">Categoría 3 <button id="button-delete-category">Eliminar</button></li>
+                    </ul>
+                </section>
+                
+            </aside>
+        </div>
+
+    </div>
+
 </body>
 </html>
