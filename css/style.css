@@ -101,6 +101,17 @@ ul.task-list {
     box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
 }
 
+
+.category-tag {
+    background-color: #6C63FF;
+    color: white;
+    padding: 2px 5px;
+    border-radius: 3px;
+    font-size: 0.8em;
+}
+
+
+
 .task-actions button, #button-delete-category{
     margin-left: 10px;
     border: none;
@@ -169,3 +180,7 @@ ul.task-list {
     cursor: pointer;
     font-size: 1rem;
 }
+
+
+
+
