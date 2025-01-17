@@ -8,13 +8,85 @@
 </head>
 <body>
   <div class="todo-app">
-    <h1>Lista de Tareas</h1>
-    <div class="input-container">
-      <input type="text" id="task-input" placeholder="Escribe una tarea..." />
-      <button id="add-task-btn">Agregar</button>
+    <h1>TO - DO LIST</h1>
+
+    <!-- Buscar tareas -->
+    <div class="search-bar">
+      <input type="text" placeholder="Buscar tarea..." class="search-input">
+      <button class="filter-category">CATEGORÍA</button>
     </div>
-    <ul id="task-list"></ul>
+
+    <!-- Pestañas de estado -->
+    <div class="tabs">
+      <button class="tab active">Todas (05)</button>
+      <button class="tab">Incompletas (03)</button>
+      <button class="tab">Completas (02)</button>
+    </div>
+
+    <!-- Lista de tareas -->
+    <ul class="task-list">
+      <li class="task completed">
+        <input type="checkbox" checked>
+        <span class="task-name">Hacer tarea de comunicación</span>
+        <button class="delete-task">Eliminar</button>
+      </li>
+      <li class="task completed">
+        <input type="checkbox" checked>
+        <span class="task-name">Hacer tarea de matemáticas</span>
+        <button class="delete-task">Eliminar</button>
+      </li>
+      <li class="task">
+        <input type="checkbox">
+        <span class="task-name">Hacer tarea de programación</span>
+        <span class="task-category university">Universidad</span>
+        <button class="edit-task">Editar</button>
+        <button class="delete-task">Eliminar</button>
+      </li>
+      <li class="task">
+        <input type="checkbox">
+        <span class="task-name">Lavar los platos</span>
+        <span class="task-category home">Hogar</span>
+        <button class="edit-task">Editar</button>
+        <button class="delete-task">Eliminar</button>
+      </li>
+      <li class="task">
+        <input type="checkbox">
+        <span class="task-name">Terminar el proyecto</span>
+        <span class="task-category work">Trabajo</span>
+        <button class="edit-task">Editar</button>
+        <button class="delete-task">Eliminar</button>
+      </li>
+    </ul>
+
+    <!-- Botón para eliminar todas las tareas -->
+    <button class="delete-all">Eliminar todas las tareas</button>
+
+    <!-- Añadir nueva tarea -->
+    <button class="add-task">+ AÑADIR NUEVA TAREA</button>
+
+    <!-- Gestión de categorías -->
+    <div class="categories">
+      <h2>Categorías</h2>
+      <div class="add-category">
+        <input type="text" placeholder="Añadir categoría..." class="category-input">
+        <button class="add-category-btn">AÑADIR</button>
+      </div>
+      <ul class="category-list">
+        <li class="category university">
+          <span>Universidad</span>
+          <button class="delete-category">Eliminar</button>
+        </li>
+        <li class="category home">
+          <span>Hogar</span>
+          <button class="delete-category">Eliminar</button>
+        </li>
+        <li class="category work">
+          <span>Trabajo</span>
+          <button class="delete-category">Eliminar</button>
+        </li>
+      </ul>
+    </div>
   </div>
-  <script src="script.js"></script>
+  <script src="js/app.js" defer></script>
 </body>
 </html>
