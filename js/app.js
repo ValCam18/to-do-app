@@ -41,7 +41,7 @@ function actualizarLista(categorias) {
         var categoriaItemHTML = `
             <li class="category-item">
                 ${categoria} 
-                <button class="button-delete-category" onclick="eliminarCategoria(${index})">Eliminar</button>
+                <button  id="button-delete-category" class="button-delete-category" onclick="eliminarCategoria(${index})">Eliminar</button>
             </li>
         `;
         categoriasLista.innerHTML += categoriaItemHTML;
@@ -200,8 +200,8 @@ function filtrarTareas(estado) {
           ${tarea.categoria ? `<span class="category-tag">${tarea.categoria}</span>` : ""}
         </span>
         <span class="task-actions">
-          <button onclick="editarTarea(${index})">Editar</button>
-          <button onclick="eliminarTarea(${index})">Eliminar</button>
+          <button id="button-edit-task" onclick="editarTarea(${index})">Editar</button>
+          <button id="button-delete-task" onclick="eliminarTarea(${index})">Eliminar</button>
         </span>
       `;
       taskList.appendChild(li);

@@ -544,6 +544,11 @@ h2{
     box-sizing: border-box;
 }
 
+#task-input:focus, #category-select-task:focus{
+    border: 1.5px solid #6919F6;
+    outline: none;
+}
+
 /* Botón de Añadir tarea */
 #button-add-task-submit {
     width: 100%; /* Botón ocupa todo el ancho */
