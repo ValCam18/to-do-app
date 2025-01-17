@@ -211,7 +211,15 @@ ul.task-list {
     border: 1px solid #6919F6;
     border-radius: 5px;
     cursor: pointer;
+
+    white-space: normal;  /* Asegura que el texto no se mantenga en una sola línea */
+    word-break: break-word;  /* Rompe las palabras largas si es necesario */
+    flex-wrap: wrap;  /* Permite que el texto se ajuste a la siguiente línea */
+
 }
+
+
+
 
 
 
@@ -348,4 +356,108 @@ h2{
 
 #button-color-picker:hover {
     color: #4A42D6; /* Cambiar color al pasar el mouse */
+}
+
+
+
+/* RESPONSIVE */
+/* 1. Pantallas pequeñas (dispositivos móviles) */
+@media (max-width: 768px) {
+    .grid {
+        grid-template-columns: 1fr; /* Una sola columna en pantallas pequeñas */
+        grid-template-areas: 
+            "top-section"
+            "task-section"
+            "category-section";
+    }
+
+    #top-section {
+        display: block; /* No usar grid */
+        text-align: center;
+    }
+
+    #task-search {
+        display: block;
+    }
+
+    #search-input,
+    #category-select {
+        width: 100%; /* Aseguramos que los inputs tomen todo el ancho */
+        margin: 10px 0;
+    }
+
+    #button-add-task {
+        width: 100%; /* Botón de añadir tarea ocupa todo el ancho */
+        margin-top: 10px;
+    }
+
+    .filter-buttons {
+        flex-direction: column; /* Los filtros se colocan verticalmente */
+    }
+
+    .filter-button {
+        margin-bottom: 10px; /* Separación entre los botones */
+    }
+
+    .task-item {
+        flex-direction: column; /* Tareas en una columna */
+        align-items: flex-start; /* Alineación a la izquierda */
+    }
+
+    .category-tag {
+        margin-left: 0;
+        margin-top: 10px;
+        text-align: left;
+    }
+
+    .task-actions {
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Categorías en una columna */
+    .category-item {
+        text-align: left;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    #category-form {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    #category-input,
+    #button-add-category {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    hr.separator {
+        width: 90%;
+    }
+}
+
+/* 2. Pantallas medianas (tabletas) */
+@media (max-width: 1024px) {
+    .grid {
+        grid-template-columns: 2fr 1fr; /* Dos columnas, pero más pequeñas */
+    }
+
+    .filter-buttons {
+        gap: 10px;
+    }
+
+    .task-item {
+        flex-direction: row;
+    }
+
+    #button-tachar-task {
+        width: auto;
+        margin: 10px 0;
+    }
+
+    #category-form {
+        gap: 20px;
+    }
 }
