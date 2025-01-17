@@ -143,6 +143,7 @@ function añadirTarea() {
 
 
 /*
+
 function añadir_task_central(){
     var tarea = document.getElementById('task-input').value;
     var categoria = document.getElementById('category-select-task').value;
