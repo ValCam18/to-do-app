@@ -29,41 +29,38 @@
                 <input type="text" id="search-input" class="search-input" placeholder="Buscar tarea..." >
                 <i class="bi bi-search"></i>
                </div>
-
-               
                <select id="category-select">
                    <option value="select">Categoría...</option>
-
                </select>
             </form>
-            
             <button id="button-add-task"  type="submit" onclick="mostrarPopup()"> <i class="bi bi-plus"></i> Añadir nueva tarea</button>
-
         </section>
 
 
          <section id="task-section">
             <!-- Filtros-->
-
             <div class="filter-buttons">
                 <button id="filter-all" class="filter-button" onclick="filtrarTareas('todas')">Todas <span id="count-all">(0)</span></button>
                 <button id="filter-pending" class="filter-button" onclick="filtrarTareas('pendientes')">Pendientes <span id="count-pending">(0)</span></button>
                 <button id="filter-done" class="filter-button" onclick="filtrarTareas('realizadas')">Realizadas <span id="count-done">(0)</span></button>
             </div>
-
             <!-- Línea de separación -->
             <hr class="separator">
-
             <!-- Lista de tareas-->
             <ul class="task-list" id="task-list">
      
             <!-- <div class="tachar-container"><button id="button-tachar-task">Tachar todas las tareas</button></div> -->
+ 
+            
+        </section>
 
-         </section>
+        <section class="tachar-container">
+            <button id="button-tachar-task">Tachar todas las tareas</button>
+        </section>
+        
+        
 
-         <section>
-            <div class="tachar-container"><button id="button-tachar-task">Tachar todas las tareas</button></div>
-         </section>
+        
 
          <section id="category-section">
             <h2>Categorías</h2>

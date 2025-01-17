@@ -206,6 +206,10 @@ function filtrarTareas(estado) {
       `;
       taskList.appendChild(li);
     });
+
+
+
+
   }
 
 

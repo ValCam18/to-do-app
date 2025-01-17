@@ -53,6 +53,8 @@ section {
 }
 
 #top-section {
+    max-height: 100px;
+
   grid-area: top-section; 
   /* background: lightblue; */
   display: grid;
@@ -61,7 +63,9 @@ section {
   align-items: center;
   box-sizing: border-box;
   grid-template-areas: 
-    "task-search button-add-task"
+    "task-search button-add-task";
+
+ 
 }
 
 #task-search{
@@ -161,6 +165,7 @@ section {
   gap: 20px;
   justify-content: space-around;
   align-items: center; 
+  max-height: 100px;
   
 } 
 
@@ -269,10 +274,18 @@ ul.task-list {
 }
 
 .tachar-container{
-    display: flex; /* Usa flexbox */
-    justify-content: flex-end; /* Alinea los hijos a la derecha */
+    display: flex; 
+    justify-content: flex-end; /* Alinea a la derecha */
     width: 100%;
+    align-self: flex-end;
 }
+
+
+
+
+
+
+
 
 #button-tachar-task{
     color: #F03353;
@@ -283,6 +296,7 @@ ul.task-list {
     border-radius: 5px;
     cursor: pointer;
     font-size: 1rem;
+    
 }
 
 #button-tachar-task:hover {
