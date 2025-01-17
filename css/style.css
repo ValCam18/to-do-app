@@ -64,7 +64,7 @@ section {
     "task-search button-add-task"
 }
 
-#task-search {
+#task-search{
   grid-area: task-search;
   display: grid;
   grid-template-columns: 3fr 1fr;
@@ -468,37 +468,95 @@ h2{
 
 
 
-
-
-
-
+/* POPUP SECTION */
 
 .popup {
-    display: none; /* Oculto por defecto */
-    position: fixed;
+    position: fixed; /* Se fija en la pantalla */
     top: 0;
     left: 0;
-    width: 100%;
+    width: 100%; /* Ocupa toda la pantalla */
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    justify-content: center;
-    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro semitransparente */
+    display: none;
+    align-items: center; /* Centra verticalmente */
+    justify-content: center; /* Centra horizontalmente */
+    transition: visibility 0s, opacity 0.3s ease-in-out; /* Animación suave */
+    z-index: 1000; /* Aparece por encima de otros elementos */
 }
 
 .popup-content {
     background-color: white;
     padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-}
-/* Estilo del contenido del popup */
-.popup-content {
-    background-color: white;
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
+    border-radius: 5px;
+    text-align: center;    
     position: relative;
-    width: 600px;
+    width: 500px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    
+}
+
+/* Botón de cierre (X) */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #6919F6;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.close-btn:hover {
+    color: #534DCC;
 }
 
 
+
+/* Input y Select en una fila */
+#addTask-Filter {
+    display: flex;
+    gap: 15px; /* Aumenta o reduce el valor para ajustar el espacio */
+    margin-bottom: 20px;
+    width: 100%; /* Ocupa todo el ancho del contenedor */
+}
+
+
+#task-input {
+    padding: 10px;
+    height: 45px;
+    width: 63%;
+    border: 1px solid #6919F6;
+    border-radius: 5px;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+#category-select-task {
+    padding: 10px;
+    height: 45px;
+    width: 35%;
+    border: 1px solid #6919F6;
+    border-radius: 5px;
+    font-size: 1rem;
+    color: #6919F6;
+    box-sizing: border-box;
+}
+
+/* Botón de Añadir tarea */
+#button-add-task-submit {
+    width: 100%; /* Botón ocupa todo el ancho */
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #6919F6;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+#button-add-task-submit:hover {
+    background-color: #534DCC;
+}

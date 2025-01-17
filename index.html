@@ -61,7 +61,7 @@
                 <li class="task-item">
                     <span class="task-checkbox">
                         <input type="checkbox" id="task-1">
-                        <label class="text-task" for="task-1">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusantium cum adipisci eveniet quia aspernatur perferendis, veritatis, aliquam quidem, dolores obcaecati odit praesentium iste facilis quae facere eius dicta possimus assumenda.loremLorem ipsum dolor, sit amet consectetur adipisicing eli </label>
+                        <label class="text-task" for="task-1">Tarea de Matemáticas </label>
                     </span>
                     <span class="category-tag">
                         <label id="task-category" for="task-2">Categoría 1</label>
@@ -74,7 +74,7 @@
                 <li class="task-item">
                     <span class="task-checkbox">
                         <input type="checkbox" id="task-1">
-                        <label class="text-task" for="task-1">Aorem ipsum, dolor sit amet consectetur adipisicing elit. Accusantium cum adipisci eveniet quia aspernatur perferendis, veritatis, aliquam quidem, dolores obcaecati odit praesentium iste facilis quae facere eius dicta possimus assumenda.loremLorem ipsum dolor, sit amet consectetur adipisicing eli </label>
+                        <label class="text-task" for="task-1"> Lavar platos </label>
                     </span>
                     <span class="category-tag">
                         <label id="task-category" for="task-2">Categoría 1</label>
@@ -84,44 +84,7 @@
                         <button id="button-delete-task">Eliminar</button>
                     </span>
                 </li>
-
-                
-                
-
             </ul>
-
-
-            
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
             <div class="tachar-container"><button id="button-tachar-task">Tachar todas las tareas</button></div>
          </section>
@@ -146,14 +109,16 @@
                         <div class="popup-content">
                             <span id="close-popup" class="close-btn" onclick="cerrar_popup()">&times;</span> <!-- La X de cierre -->
                             <h2>Nueva Tarea</h2>
+                            <div id="addTask-Filter"></div>
                             <form id="task-form">
                                 <input type="text" id="task-input" placeholder="Agregar tarea..." required>
                                 <select id="category-select-task">
-                                    <option value="">CATEGORIA</option>
+                                    <option value="">Categoría...</option>
                                     <!-- Las categorías se añadirán dinámicamente aquí -->
                                 </select>
                                 <button type="submit" id="button-add-task-submit" onclick="añadirTarea()">Añadir tarea</button>
                             </form>
+                        </div>
                         </div>
                     </div>
 
