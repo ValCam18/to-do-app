@@ -228,7 +228,8 @@ function filtrarTareas(estado) {
       li.innerHTML = `
         <span>
           <input type="checkbox" id="task-${index}" ${tarea.estado === "completado" ? "checked" : ""} onchange="cambiarEstadoTarea(${index})">
-          <label for="task-${index}" class="text-task">${tarea.tarea}</label>
+          <label for="task-${index}" class="text-task ${tarea.estado === "completado" ? "task-completed" : ""}">${tarea.tarea}</label>
+
           ${tarea.categoria ? `<span class="category-tag">${tarea.categoria}</span>` : ""}
         </span>
         <span class="task-actions">
@@ -236,8 +237,6 @@ function filtrarTareas(estado) {
                 <button id="button-delete-task" onclick="eliminarTarea(${index})">Eliminar</button>
         </span>
 
-
-        
       `;
       taskList.appendChild(li);
     });
@@ -314,11 +313,58 @@ function guardarTarea(index) {
   cargarTareas(); // Recargar la lista de tareas
 }
 
-
-
 function cancelarEdicion(index) {
   cargarTareas(); // Simplemente recarga las tareas originales
 }
+
+
+
+
+
+
+
+
+// Escuchar el clic en el botón "Tachar todas las tareas"
+document.getElementById("button-tachar-task").addEventListener("click", tacharTodasTareas);
+
+function tacharTodasTareas() {
+    var tareas = JSON.parse(localStorage.getItem("tareas")) || [];
+    
+    // Cambiar el estado de todas las tareas a "completado"
+    tareas.forEach(function(tarea) {
+        tarea.estado = "completado";
+    });
+
+    // Guardar las tareas actualizadas en el localStorage
+    localStorage.setItem("tareas", JSON.stringify(tareas));
+
+    // Recargar las tareas para reflejar los cambios en la interfaz
+    cargarTareas();
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
