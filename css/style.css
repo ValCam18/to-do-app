@@ -19,6 +19,7 @@ body{
     margin: 0 auto;
     /* padding: 20px; */
     padding: 10px;
+    height: 100px;
 }
 
 .grid {
@@ -53,8 +54,7 @@ section {
 }
 
 #top-section {
-    max-height: 100px;
-
+  max-height: 100px; 
   grid-area: top-section; 
   /* background: lightblue; */
   display: grid;
@@ -64,8 +64,6 @@ section {
   box-sizing: border-box;
   grid-template-areas: 
     "task-search button-add-task";
-
- 
 }
 
 #task-search{
@@ -165,8 +163,8 @@ section {
   gap: 20px;
   justify-content: space-around;
   align-items: center; 
-  max-height: 100px;
-  
+  /* max-height: ;  */
+  height: auto ;
 } 
 
 hr.separator {
@@ -277,15 +275,8 @@ ul.task-list {
     display: flex; 
     justify-content: flex-end; /* Alinea a la derecha */
     width: 100%;
-    align-self: flex-end;
+    /* align-self: flex-end; */
 }
-
-
-
-
-
-
-
 
 #button-tachar-task{
     color: #F03353;
