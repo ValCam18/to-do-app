@@ -1,3 +1,4 @@
+// ESTO ES editarTarea
 window.onload = function() {
     // Obtener las categorías desde el localStorage
     var categorias = JSON.parse(localStorage.getItem('categorias')) || [];
@@ -7,6 +8,13 @@ window.onload = function() {
     cargarTareas()
 
 }
+
+
+/* Agregar Fecha */
+const fecha = document.querySelector("#fecha");
+const FECHA = new Date();
+fecha.innerHTML = FECHA.toLocaleDateString("es-ES", {weekday:"long", month:"short", day:"numeric", year:"numeric"});
+
 
 
 function añadirCategoria() {
@@ -24,6 +32,7 @@ function añadirCategoria() {
 
         actualizarLista(categorias);
 
+      
 
     } else {
         alert('Por favor, introduce una categoría.');
@@ -141,6 +150,29 @@ function cambiarEstadoTarea(index) {
     actualizarContadores(); // Actualizar los contadores
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function actualizarContadores() {
     var tareas = JSON.parse(localStorage.getItem("tareas")) || [];
 
@@ -206,11 +238,42 @@ function filtrarTareas(estado) {
       `;
       taskList.appendChild(li);
     });
-
-
-
-
   }
+
+
+
+
+
+// Función editar tareas
+function editarTarea(index) {
+  var tareas = JSON.parse(localStorage.getItem("tareas")) || [];
+  var tarea = tareas[index];
+  var tareaInput = prompt("Editar tarea:", tarea.tarea);
+  if (tareaInput !== null && tareaInput.trim() !== "") {
+      tareas[index].tarea = tareaInput.trim();
+      localStorage.setItem("tareas", JSON.stringify(tareas));
+      cargarTareas();
+}
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 var taskList = document.querySelector("#task-list");
