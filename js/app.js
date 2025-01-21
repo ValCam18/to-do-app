@@ -245,21 +245,75 @@ function filtrarTareas(estado) {
 
 
 // Función editar tareas
+// function editarTarea(index) {
+//   var tareas = JSON.parse(localStorage.getItem("tareas")) || [];
+//   var tarea = tareas[index];
+//   var tareaInput = prompt("Editar tarea:", tarea.tarea);
+//   if (tareaInput !== null && tareaInput.trim() !== "") {
+//       tareas[index].tarea = tareaInput.trim();
+//       localStorage.setItem("tareas", JSON.stringify(tareas));
+//       cargarTareas();
+// }
+//   }
+
+
+
 function editarTarea(index) {
   var tareas = JSON.parse(localStorage.getItem("tareas")) || [];
   var tarea = tareas[index];
-  var tareaInput = prompt("Editar tarea:", tarea.tarea);
-  if (tareaInput !== null && tareaInput.trim() !== "") {
-      tareas[index].tarea = tareaInput.trim();
-      localStorage.setItem("tareas", JSON.stringify(tareas));
-      cargarTareas();
+
+  // Seleccionar la casilla específica de la tarea
+  var taskItem = document.querySelectorAll(".task-item")[index];
+
+  // Reemplazar contenido con el formulario editable
+  taskItem.innerHTML = `
+    <span>
+      <input type="text" id="edit-task-input" value="${tarea.tarea}" class="edit-input">
+      <select id="edit-category-select" class="edit-select">
+        <option value="">Seleccionar...</option>
+      </select>
+    </span>
+    <span class="task-actions">
+      <button id="button-save-task" onclick="guardarTarea(${index})">Guardar</button>
+      <button id="button-cancel-task" onclick="cancelarEdicion(${index})">Cancelar</button>
+    </span>
+  `;
+  // Llenar el select de categorías
+  var categorias = JSON.parse(localStorage.getItem("categorias")) || [];
+  var select = document.getElementById("edit-category-select");
+
+  categorias.forEach(function(categoria) {
+      var option = document.createElement("option");
+      option.value = categoria;
+      option.textContent = categoria;
+      if (categoria === tarea.categoria) {
+          option.selected = true;
+      }
+      select.appendChild(option);
+  });
 }
+
+
+function guardarTarea(index) {
+  var tareas = JSON.parse(localStorage.getItem("tareas")) || [];
+  // Obtener los valores del input y select
+  var tareaInput = document.getElementById("edit-task-input").value.trim();
+  var categoriaSeleccionada = document.getElementById("edit-category-select").value;
+
+  if (tareaInput === "") {
+      alert("La tarea no puede estar vacía.");
+      return;
   }
+  // Actualizar los valores de la tarea
+  tareas[index].tarea = tareaInput;
+  tareas[index].categoria = categoriaSeleccionada;
+  localStorage.setItem("tareas", JSON.stringify(tareas)); // Guardar en localStorage
+  cargarTareas(); // Recargar la lista de tareas
+}
 
-
-
-
-
+function cancelarEdicion(index) {
+  cargarTareas(); // Simplemente recarga las tareas originales
+}
 
 
 

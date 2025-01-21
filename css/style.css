@@ -367,6 +367,59 @@ h2{
 
 
 
+/* EDITAR TAREA */
+#button-save-task {
+    background-color: #6919F6;
+    color: white;
+    padding: 5px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-sizing: border-box;
+    height: 30px;
+}
+
+#button-save-task:hover {
+    background-color: #4A42D6; /* Cambiar color al pasar el mouse */
+}
+
+#button-cancel-task {
+    background-color: #807f7f;
+    color: white;
+    padding: 5px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-sizing: border-box;
+    height: 30px;
+}
+
+#button-cancel-task:hover {
+    background-color: #525151 /* Cambiar color al pasar el mouse */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* RESPONSIVE */
 /* 1. Pantallas pequeñas (dispositivos móviles) */
 @media (max-width: 768px) {
@@ -571,4 +624,30 @@ h2{
 
 #button-add-task-submit:hover {
     background-color: #534DCC;
+}
+
+
+#edit-task-input {
+    /* padding: 10px; */
+    /* height: 45px; */
+    /* width: 60%; */
+    border: 1px solid #6919F6;
+    border-radius: 5px;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+#edit-category-select {
+    /* padding: 10px; */
+    /* height: 30px; */
+    /* width: 30%;  */
+    border: 1px solid #6919F6;
+    border-radius: 5px;
+    color: #6919F6;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+#edit-task-input:focus, #edit-category-select:focus{
+    border: 1.5px solid #6919F6;
+    outline: none;
 }
