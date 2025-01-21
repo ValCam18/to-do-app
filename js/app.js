@@ -232,9 +232,12 @@ function filtrarTareas(estado) {
           ${tarea.categoria ? `<span class="category-tag">${tarea.categoria}</span>` : ""}
         </span>
         <span class="task-actions">
-          <button id="button-edit-task" onclick="editarTarea(${index})">Editar</button>
-          <button id="button-delete-task" onclick="eliminarTarea(${index})">Eliminar</button>
+                <button id="button-edit-task" onclick="editarTarea(${index})" ${tarea.estado === "completado" ? "disabled" : ""}>Editar</button>
+                <button id="button-delete-task" onclick="eliminarTarea(${index})">Eliminar</button>
         </span>
+
+
+        
       `;
       taskList.appendChild(li);
     });
@@ -310,6 +313,8 @@ function guardarTarea(index) {
   localStorage.setItem("tareas", JSON.stringify(tareas)); // Guardar en localStorage
   cargarTareas(); // Recargar la lista de tareas
 }
+
+
 
 function cancelarEdicion(index) {
   cargarTareas(); // Simplemente recarga las tareas originales
