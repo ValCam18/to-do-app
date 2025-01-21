@@ -1,4 +1,4 @@
-// ESTO ES editarTarea
+//ESTO ES EDITAR TAREA
 window.onload = function() {
     // Obtener las categorías desde el localStorage
     var categorias = JSON.parse(localStorage.getItem('categorias')) || [];
