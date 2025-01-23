@@ -344,8 +344,11 @@ function tacharTodasTareas() {
 
 
 
+// FUNCION ICONO COMO PICKER COLOR CATEGORIA
 
-
+function colorCategoria(){
+  var color = document.getElementById("category-color").click();
+}
 
 
 

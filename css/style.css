@@ -405,7 +405,34 @@ h2{
   }
   
 
+/* ICONO EN PICKER DE COLOR DE CATEGORIA */
 
+.color-selector {
+    position: relative;
+    
+  }
+
+
+#category-color {
+  border: none;
+  padding: 0;
+  width: 40px; /* Ajusta el tamaño */
+  height: 40px;
+  cursor: pointer;
+  display: none;  
+}
+
+.bi-eyedropper {
+  font-size: 25px; /* Tamaño del ícono */
+  margin-right: 5px; /* Espacio entre ícono y selector */
+  display: flex;
+  align-items: center;
+  color:#6919F6 ;
+}
+ 
+
+
+ 
 
 
 
