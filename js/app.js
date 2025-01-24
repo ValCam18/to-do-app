@@ -413,3 +413,54 @@ searchInput.addEventListener("input", function(e) {
 
 
 
+
+
+	
+function filtrarTareas(estado) {
+  var tareas = JSON.parse(localStorage.getItem("tareas")) || [];
+  var categoriaSeleccionada = document.getElementById("category-select").value;
+  
+  var tareasFiltradas = [];
+  // Filtra las tareas según el estado
+  if (estado === 'todas') {
+      tareasFiltradas = tareas;
+  } else if (estado === 'pendientes') {
+      tareasFiltradas = tareas.filter(function(tarea) {
+          return tarea.estado === "activo";
+      });
+  } else if (estado === 'realizadas') {
+      tareasFiltradas = tareas.filter(function(tarea) {
+          return tarea.estado === "completado";
+      });
+  }
+  // Filtrar también por categoría
+  if (categoriaSeleccionada) {
+      tareasFiltradas = tareasFiltradas.filter(function(tarea) {
+          return tarea.categoria === categoriaSeleccionada;
+      });
+  }
+  // Actualizar la lista de tareas
+  actualizarListaTareas(tareasFiltradas);
+  // Actualizar los contadores
+  actualizarContadores();
+}
+document.getElementById("category-select").addEventListener("change", function() {
+  // Filtrar las tareas según el estado actual y la categoría seleccionada
+  var estadoActual = document.querySelector(".filter-button.active") ? document.querySelector(".filter-button.active").dataset.estado : 'todas';
+  filtrarTareas(estadoActual);
+});
+document.getElementById("filter-all").addEventListener("click", function() {
+  document.querySelectorAll(".filter-button").forEach(button => button.classList.remove("active"));
+  this.classList.add("active");
+  filtrarTareas('todas');
+});
+document.getElementById("filter-pending").addEventListener("click", function() {
+  document.querySelectorAll(".filter-button").forEach(button => button.classList.remove("active"));
+  this.classList.add("active");
+  filtrarTareas('pendientes');
+});
+document.getElementById("filter-done").addEventListener("click", function() {
+  document.querySelectorAll(".filter-button").forEach(button => button.classList.remove("active"));
+  this.classList.add("active");
+  filtrarTareas('realizadas');
+});
