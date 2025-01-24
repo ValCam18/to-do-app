@@ -16,70 +16,152 @@ fecha.innerHTML = FECHA.toLocaleDateString("es-ES", {weekday:"long", month:"shor
 
 
 
-function añadirCategoria() {
-    var categoria = document.getElementById('category-input').value;
+// function añadirCategoria() {
+//     var categoria = document.getElementById('category-input').value;
 
-    if (categoria.trim() !== "") {
 
-        var categorias = JSON.parse(localStorage.getItem('categorias')) || [];
+//     if (categoria.trim() !== "") {
 
-        categorias.push(categoria);
+//         var categorias = JSON.parse(localStorage.getItem('categorias')) || [];
 
-        localStorage.setItem('categorias', JSON.stringify(categorias));
+//         categorias.push(categoria);
 
-        document.getElementById('category-input').value = "";
+//         localStorage.setItem('categorias', JSON.stringify(categorias));
 
-        actualizarLista(categorias);
+//         document.getElementById('category-input').value = "";
+
+//         actualizarLista(categorias);
 
       
 
-    } else {
-        alert('Por favor, introduce una categoría.');
-    }
+//     } else {
+//         alert('Por favor, introduce una categoría.');
+//     }
+// }
+
+
+function añadirCategoria() {
+  var categoria = document.getElementById('category-input').value;
+  var color = document.getElementById('category-color').value;
+
+  if (categoria.trim() !== "") {
+
+      var categorias = JSON.parse(localStorage.getItem('categorias')) || [];
+
+      categorias.push({ nombre: categoria, color: color });
+
+      localStorage.setItem('categorias', JSON.stringify(categorias));
+
+      document.getElementById('category-input').value = "";
+      document.getElementById('category-color').value = "#000000"; // Restablecer color por defecto
+
+      actualizarLista(categorias);
+
+  } else {
+      alert('Por favor, introduce una categoría.');
+  }
 }
+
+
 
 function actualizarLista(categorias) {
-    var categoriasLista = document.getElementById("lista_categorias");
-    categoriasLista.innerHTML = "";
+  var categoriasLista = document.getElementById("lista_categorias");
+  categoriasLista.innerHTML = "";
 
-    // Crear el HTML para cada categoría y agregarla al contenedor
-    // <li class="category-item">Categoría 1 <button id="button-delete-category">Eliminar</button></li>
+  // Crear el HTML para cada categoría y agregarla al contenedor
+  // <li class="category-item">Categoría 1 <button id="button-delete-category">Eliminar</button></li>
 
-    categorias.forEach(function(categoria, index) {
-        var categoriaItemHTML = `
-            <li class="category-item">
-                ${categoria} 
-                <button  id="button-delete-category" class="button-delete-category" onclick="eliminarCategoria(${index})">Eliminar</button>
-            </li>
-        `;
-        categoriasLista.innerHTML += categoriaItemHTML;
-    });
+  categorias.forEach(function(categoria, index) {
+      var categoriaItemHTML = `
+      <li class="category-item" style="color: ${categoria.color};">
+          ${categoria.nombre}
+          <button id="button-delete-category" class="button-delete-category" onclick="eliminarCategoria(${index})">Eliminar</button>
+      </li>
+  `;
+      categoriasLista.innerHTML += categoriaItemHTML;
+  });
 
 }
+
+
+
+
+// function actualizarLista(categorias) {
+//     var categoriasLista = document.getElementById("lista_categorias");
+//     categoriasLista.innerHTML = "";
+
+//     // Crear el HTML para cada categoría y agregarla al contenedor
+//     // <li class="category-item">Categoría 1 <button id="button-delete-category">Eliminar</button></li>
+
+//     categorias.forEach(function(categoria, index) {
+//         var categoriaItemHTML = `
+//             <li class="category-item">
+//                 ${categoria} 
+//                 <button  id="button-delete-category" class="button-delete-category" onclick="eliminarCategoria(${index})">Eliminar</button>
+//             </li>
+//         `;
+//         categoriasLista.innerHTML += categoriaItemHTML;
+//     });
+
+// }
+
+
 function actualizarSelectCategorias(categorias) {
-    var selectCategoria = document.getElementById('category-select');
+  var selectCategoria = document.getElementById('category-select');
 
-    var opcionesHTML = '<option value="">Seleccionar...</option>';
+  var opcionesHTML = '<option value="">Seleccionar...</option>';
 
-    categorias.forEach(function(categoria) {
-        opcionesHTML += `<option value="${categoria}">${categoria}</option>`;
-    });
+  categorias.forEach(function(categoria) {
+      opcionesHTML += `<option value="${categoria.nombre}">${categoria.nombre}</option>`;
+  });
 
-    selectCategoria.innerHTML = opcionesHTML;
+  selectCategoria.innerHTML = opcionesHTML;
 }
+
+
 
 function actualizarSelectCategoriasPopup(categorias) {
-    var selectCategoria = document.getElementById('category-select-task');
+  var selectCategoria = document.getElementById('category-select-task');
 
-    var opcionesHTML = '<option value="">CATEGORIA</option>';
+  var opcionesHTML = '<option value="">CATEGORIA</option>';
+  
+
+  categorias.forEach(function(categoria) {
+      opcionesHTML += `<option value="${categoria.nombre}">${categoria.nombre}</option>`;
+  });
+
+  selectCategoria.innerHTML = opcionesHTML;
+}
+
+
+
+
+// function actualizarSelectCategorias(categorias) {
+//     var selectCategoria = document.getElementById('category-select');
+
+//     var opcionesHTML = '<option value="">Seleccionar...</option>';
+
+//     categorias.forEach(function(categoria) {
+//         opcionesHTML += `<option value="${categoria}">${categoria}</option>`;
+//     });
+
+//     selectCategoria.innerHTML = opcionesHTML;
+// }
+
+
+
+// function actualizarSelectCategoriasPopup(categorias) {
+//     var selectCategoria = document.getElementById('category-select-task');
+
+//     var opcionesHTML = '<option value="">CATEGORIA</option>';
     
 
-    categorias.forEach(function(categoria) {
-        opcionesHTML += `<option value="${categoria}">${categoria}</option>`;
-    });
+//     categorias.forEach(function(categoria) {
+//         opcionesHTML += `<option value="${categoria}">${categoria}</option>`;
+//     });
 
-    selectCategoria.innerHTML = opcionesHTML;
-}
+//     selectCategoria.innerHTML = opcionesHTML;
+// }
 
 
 function eliminarCategoria(index) {
@@ -127,6 +209,7 @@ function añadirTarea() {
     document.getElementById("task-input").value = "";
     cerrar_popup();
     cargarTareas();
+
 }
 
 
@@ -217,7 +300,9 @@ function filtrarTareas(estado) {
     }).length + ")";
   }
   
-  // Función para actualizar la lista de tareas
+ 
+
+
   function actualizarListaTareas(tareas) {
     taskList.innerHTML = ""; // Limpiar la lista de tareas
   
@@ -229,7 +314,8 @@ function filtrarTareas(estado) {
           <input type="checkbox" id="task-${index}" ${tarea.estado === "completado" ? "checked" : ""} onchange="cambiarEstadoTarea(${index})">
           <label for="task-${index}" class="text-task ${tarea.estado === "completado" ? "task-completed" : ""}">${tarea.tarea}</label>
 
-          ${tarea.categoria ? `<span class="category-tag">${tarea.categoria}</span>` : ""}
+          ${tarea.categoria ? `<span class="category-tag" >${tarea.categoria}</span>` : ""}
+
         </span>
         <span class="task-actions">
                 <button id="button-edit-task" onclick="editarTarea(${index})" ${tarea.estado === "completado" ? "disabled" : ""}>Editar</button>
@@ -241,6 +327,38 @@ function filtrarTareas(estado) {
     });
   }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  // class="category-item" style="color: ${categoria.color};">
+  //         ${categoria.nombre}
 
 
 
@@ -285,14 +403,18 @@ function editarTarea(index) {
 
   categorias.forEach(function(categoria) {
       var option = document.createElement("option");
-      option.value = categoria;
-      option.textContent = categoria;
-      if (categoria === tarea.categoria) {
+      option.value = categoria.nombre;
+      option.textContent = categoria.nombre;
+      if (categoria.nombre === tarea.categoria) {
           option.selected = true;
       }
       select.appendChild(option);
   });
 }
+
+
+// opcionesHTML += `<option value="${categoria.nombre}">${categoria.nombre}</option>`;
+
 
 
 function guardarTarea(index) {
@@ -464,3 +586,11 @@ document.getElementById("filter-done").addEventListener("click", function() {
   this.classList.add("active");
   filtrarTareas('realizadas');
 });
+
+
+
+
+
+
+
+// SELECCIONAR COLOR EN CATEGORIA

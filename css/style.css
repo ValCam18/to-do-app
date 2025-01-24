@@ -417,10 +417,16 @@ h2{
   border: none;
   padding: 0;
   width: 40px; /* Ajusta el tamaño */
-  height: 40px;
+  height: 30px;
   cursor: pointer;
-  display: none;  
-}
+  /* display: none;   */
+  box-sizing: border-box;
+} 
+
+
+
+
+
 
 .bi-eyedropper {
   font-size: 25px; /* Tamaño del ícono */
