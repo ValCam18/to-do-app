@@ -11,7 +11,8 @@ body{
     line-height: 1.6;
     background-color: rgb(255, 255, 255);
     color: #525151;
-    padding: 20px;
+    /*padding: 20px;*/
+    padding: 2em 5%;
 }
 
 .container{
@@ -20,6 +21,169 @@ body{
     /* padding: 20px; */
     padding: 10px;
     height: 100px;
+    width: 100%;
+}
+
+/* Asegura que las columnas se ajusten correctamente a diferentes tamaños de pantalla */
+.grid {
+    grid-template-columns: 3fr 1fr;
+    grid-template-areas: "top-section top-section" "task-section category-section";
+    gap: 20px;
+}
+
+/* Estilo de categorías */
+.category-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 15px;
+    margin-bottom: 10px;
+    border: 1px solid #6919F6;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Estilo de las tareas */
+.task-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #6919F6;
+    border-radius: 5px;
+    cursor: pointer;
+    word-break: break-word;
+    flex-wrap: wrap; /* Ajuste automático de texto */
+}
+
+.task-item:hover {
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Sección de tareas y categorías */
+#task-section, #category-section {
+    grid-area: task-section, category-section;
+}
+
+/* Estilos de los botones */
+#button-add-task, 
+#button-save-task, 
+#button-cancel-task,
+#button-add-category, 
+#button-add-task-submit {
+    width: 100%; /* Asegura que los botones ocupen todo el ancho disponible */
+    padding: 10px;
+    font-size: 1rem;
+    background-color: #6919F6;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px 0;
+}
+
+#button-add-task:hover,
+#button-save-task:hover,
+#button-cancel-task:hover {
+    background-color: #534DCC; /* Cambia el color cuando se pasa el mouse */
+}
+
+/* Tareas */
+.task-item {
+    display: flex;
+    flex-wrap: wrap; /* Permite que las tareas se ajusten a múltiples filas si es necesario */
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #6919F6;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%; /* Asegura que las tareas no se expandan más allá del contenedor */
+    box-sizing: border-box;
+}
+
+/* Diseño de la sección de tareas */
+#task-section {
+    display: flex;
+    flex-wrap: wrap; /* Flexbox permite que las tareas se acomoden correctamente */
+    justify-content: space-between; /* Distribuye las tareas con espacio entre ellas */
+    gap: 20px; /* Espacio entre las tareas */
+    width: 100%;
+}
+
+/* Asegura que las tareas se ajusten correctamente cuando se reduce el tamaño de la pantalla */
+@media (max-width: 1024px) {
+    #task-section {
+        flex-direction: column; /* Apilar las tareas en una sola columna en pantallas medianas */
+        gap: 10px;
+    }
+}
+
+/* Tareas */
+.task-item {
+    display: flex;
+    flex-wrap: wrap; /* Permite que las tareas se ajusten a múltiples filas si es necesario */
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #6919F6;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%; /* Asegura que las tareas no se expandan más allá del contenedor */
+    box-sizing: border-box;
+}
+
+/* Diseño de la sección de tareas */
+#task-section {
+    display: flex;
+    flex-wrap: wrap; /* Flexbox permite que las tareas se acomoden correctamente */
+    justify-content: space-between; /* Distribuye las tareas con espacio entre ellas */
+    gap: 20px; /* Espacio entre las tareas */
+    width: 100%;
+}
+
+/* Asegura que las tareas se ajusten correctamente cuando se reduce el tamaño de la pantalla */
+@media (max-width: 1024px) {
+    #task-section {
+        flex-direction: column; /* Apilar las tareas en una sola columna en pantallas medianas */
+        gap: 10px;
+    }
+}
+
+/* Tareas en pantallas grandes (Laptop/Desktops) */
+#task-section {
+    display: grid; /* Usamos Grid para distribuir las tareas en columnas */
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Mínimo de 300px por tarea, luego se ajustan */
+    gap: 20px; /* Espacio entre las tareas */
+    width: 100%;
+}
+
+/* Ajuste para laptops o pantallas más pequeñas */
+@media (max-width: 1024px) {
+    #task-section {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Ajuste para pantallas más pequeñas */
+    }
+}
+
+/* Ajustes para los elementos dentro de las tareas */
+.task-item {
+    flex-wrap: wrap; /* Permite que el contenido se ajuste si hay mucho texto o elementos dentro */
+    padding: 10px;
+    width: calc(33.33% - 20px); /* Cada tarea ocupará un 33% de la pantalla en laptops */
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px; /* Espaciado entre tareas */
+}
+
+@media (max-width: 1024px) {
+    /* En pantallas más pequeñas, las tareas ocupan el 100% del ancho */
+    .task-item {
+        width: 100%;
+    }
 }
 
 .grid {
@@ -31,7 +195,7 @@ body{
     "task-section category-section";
   /* gap: 10px; */
   /* min-height: 100vh; */
-  width: 100%;
+  /*width: 100%;*/
   height: 100%;
 }
 
