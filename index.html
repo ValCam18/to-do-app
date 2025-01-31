@@ -59,7 +59,7 @@
         </section>
 
         <section class="tachar-container">
-            <button id="button-tachar-task">Tachar todas las tareas</button>
+            <button id="button-tachar-task" onclick="mostrarPopupTachar()">Tachar todas las tareas</button>
         </section>
         
         
@@ -114,6 +114,40 @@
                     <p id="delete-text">¿Estás seguro de que deseas eliminar esta tarea?</p>
                     <button id="button-cancel-task-popup"  onclick="cerrarPopupDelete()">Cancelar</button>
                     <button id="button-delete-task-popup" onclick="eliminarTarea();">Eliminar</button>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- VENTANA DE ELIMINAR CATEGORIA -->
+        <section>
+            <div id="popup-confirm-delete-category" class="popup-confirm">
+                <div class="popup-content-delete-category">
+                    <i class="bi-x-circle"></i>
+                    <h2 id="delete-text-title">Eliminar Categoría</h2>
+                    <p id="delete-text-category">¿Estás seguro de que deseas eliminar esta categoria?</p>
+                    <button id="button-cancel-category-popup"  onclick="cerrarPopupDeleteCategory()">Cancelar</button>
+                    <button id="button-delete-category-popup" onclick="eliminarCategoria();">Eliminar</button>
+
+                </div>
+            </div>
+        </section>
+
+
+
+
+
+          <!-- VENTANA DE TACHAR TODAS LAS TAREAS -->
+          <section>
+            <div id="popup-confirm-tachar" class="popup-confirm">
+                <div class="popup-content-tachar">
+                    <i class="bi-check-circle"></i>
+                    <h2 id="tachar-text-title">Tachar tareas</h2>
+                    <p id="tachar-text">¿Estás seguro de que deseas marcar como realizadas todas tus tarea?</p>
+                    <button id="button-cancel-alltask-popup"  onclick="cerrarPopupTachar()">Cancelar</button>
+                    <button id="button-tachar-alltask-popup" onclick="tacharTodasTareas();">Tachar tareas</button>
+
+
 
                 </div>
             </div>

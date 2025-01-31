@@ -293,6 +293,12 @@ ul.task-list {
     color: #00E6FF;
 }
 
+#button-edit-task:disabled{
+    color: #a6a6a6;
+}
+
+
+
 #button-delete-task, #button-delete-category{
     color: #ff002b;
 }
@@ -326,6 +332,9 @@ ul.task-list {
     color: #ffffff;
     background-color:#ff000d ;
 }
+
+
+
 
 
 
@@ -414,7 +423,7 @@ h2{
     background-color: #4A42D6; /* Cambiar color al pasar el mouse */
 }
 
-#button-cancel-task, #button-cancel-task-popup, #button-delete-task-popup {
+#button-cancel-task, #button-cancel-task-popup, #button-delete-task-popup, #button-tachar-alltask-popup, #button-cancel-alltask-popup, #button-cancel-category-popup, #button-delete-category-popup {
     background-color: #807f7f;
     color: white;
     padding: 5px 15px;
@@ -425,7 +434,7 @@ h2{
     height: 30px;
 }
 
-#button-delete-task-popup{
+#button-delete-task-popup, #button-tachar-alltask-popup, #button-delete-category-popup{
     background-color: #6919F6;
 }
 
@@ -542,7 +551,7 @@ h2{
 
 
 
-.popup-confirm {
+.popup-confirm{
     display: none;
     position: fixed;
     top: 0;
@@ -555,7 +564,7 @@ h2{
 }
 
 
-.popup-content-delete {
+.popup-content-delete, .popup-content-tachar, .popup-content-delete-category {
     background-color: white;
     padding: 30px;
     border-radius: 5px;
@@ -565,17 +574,17 @@ h2{
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-#delete-text{
+#delete-text, #tachar-text, #delete-text-category{
     margin: 10px 0 20px 0;
     color: #525151;
 }
 
-#delete-text-title{
+#delete-text-title, #tachar-text-title{
     text-align: center;
     /* color: #6919F6; */
 }
 
-.bi-x-circle{
+.bi-x-circle, .bi-check-circle{
     color: #6919F6;
     font-size: 60px;
 

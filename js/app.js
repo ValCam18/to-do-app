@@ -54,13 +54,87 @@ function actualizarLista(categorias) {
       var categoriaItemHTML = `
       <li class="category-item" style="color: ${categoria.color};">
           ${categoria.nombre}
-          <button id="button-delete-category" class="button-delete-category" onclick="eliminarCategoria(${index})">Eliminar</button>
+          <button id="button-delete-category" class="button-delete-category" onclick="mostrarPopupDeleteCategory(${index}) ">Eliminar</button>
       </li>
   `;
       categoriasLista.innerHTML += categoriaItemHTML;
   });
 
 }
+
+
+
+
+
+
+function mostrarPopupDeleteCategory(index){
+  // Obtener el nombre de la tarea usando el índice
+  var categorias = JSON.parse(localStorage.getItem('categorias')) || [];
+  var categoriaNombre = categorias[index].nombre;
+
+
+  document.getElementById("popup-confirm-delete-category").style.display = "flex";
+
+  // Actualizar el texto del popup con el nombre de la tarea
+  document.getElementById("delete-text-category").innerHTML = `¿Estás seguro de que deseas eliminar la categoría: <strong>${categoriaNombre}</strong>?`;
+  document.getElementById("button-delete-category-popup").setAttribute("data-index", index);
+
+}
+
+function cerrarPopupDeleteCategory(){
+  document.getElementById("popup-confirm-delete-category").style.display = "none";
+}
+
+function eliminarCategoria(index) {
+  var index = document.getElementById("button-delete-category-popup").getAttribute("data-index"); // Obtener el índice del atributo del botón  
+  var categorias = JSON.parse(localStorage.getItem('categorias')) || [];
+
+  categorias.splice(index, 1);
+
+  localStorage.setItem('categorias', JSON.stringify(categorias));
+
+  actualizarLista(categorias);
+  actualizarSelectCategorias(categorias);
+  actualizarSelectCategoriasPopup(categorias)
+  cerrarPopupDeleteCategory(); // Cerramos el popup
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -99,18 +173,7 @@ function actualizarSelectCategoriasPopup(categorias) {
 
 
 
-function eliminarCategoria(index) {
-    var categorias = JSON.parse(localStorage.getItem('categorias')) || [];
 
-    categorias.splice(index, 1);
-
-    localStorage.setItem('categorias', JSON.stringify(categorias));
-
-    actualizarLista(categorias);
-    actualizarSelectCategorias(categorias);
-    actualizarSelectCategoriasPopup(categorias)
-
-}
 
 
 
@@ -154,6 +217,28 @@ function añadirTarea() {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function mostrarPopupDelete(index){
   // Obtener el nombre de la tarea usando el índice
   var tareas = JSON.parse(localStorage.getItem("tareas")) || [];
@@ -165,26 +250,85 @@ function mostrarPopupDelete(index){
   document.getElementById("delete-text").innerHTML = `¿Estás seguro de que deseas eliminar la tarea: <strong>${tareaNombre}</strong>?`;
   document.getElementById("button-delete-task-popup").setAttribute("data-index", index);
 
-
 }
 
 function cerrarPopupDelete(){
   document.getElementById("popup-confirm-delete").style.display = "none";
-
 }
 
 
 function eliminarTarea(index) {
-  var index = document.getElementById("button-delete-task-popup").getAttribute("data-index"); // Obtener el índice del atributo del botón
-    
+  var index = document.getElementById("button-delete-task-popup").getAttribute("data-index"); // Obtener el índice del atributo del botón  
   var tareas = JSON.parse(localStorage.getItem("tareas")) || []; // Obtenemos las tareas
-      tareas.splice(index, 1); // Eliminamos la tarea por el índice guardado
+  tareas.splice(index, 1); // Eliminamos la tarea por el índice guardado
 
       localStorage.setItem("tareas", JSON.stringify(tareas));
       filtrarTareas("todas"); // Recargar todas las tareas después de eliminar
       actualizarContadores(); // Actualizar los contadores
       cerrarPopupDelete(); // Cerramos el popup
 }
+
+
+
+// POP UP DE CONFIRMACIÓN ELIMINAR TODAS LAS TAREAS
+function mostrarPopupTachar(){
+  var tareas = JSON.parse(localStorage.getItem("tareas")) || [];
+
+  // Verificar si todas las tareas ya están completadas
+  var todasCompletadas = tareas.every(tarea => tarea.estado === "completado");
+
+  if (todasCompletadas) {
+      // Si todas las tareas ya están completadas, deshabilitar el botón y no mostrar el popup
+      document.getElementById("button-tachar-task").disabled = true;
+      alert("Todas las tareas ya están tachadas.");
+      return; // No continuar con la ejecución
+  }
+
+  document.getElementById("popup-confirm-tachar").style.display = "flex";
+}
+
+function cerrarPopupTachar(){
+  document.getElementById("popup-confirm-tachar").style.display = "none";
+}
+
+
+
+function tacharTodasTareas() {
+  var tareas = JSON.parse(localStorage.getItem("tareas")) || [];
+
+  // Verificar si todas las tareas ya están completadas
+  var todasCompletadas = tareas.every(tarea => tarea.estado === "completado");
+
+ 
+  // Cambiar el estado de todas las tareas a "completado"
+  tareas.forEach(tarea => tarea.estado = "completado");
+
+  // Guardar las tareas actualizadas en el localStorage
+  localStorage.setItem("tareas", JSON.stringify(tareas));
+
+  // Recargar las tareas para reflejar los cambios en la interfaz
+  cargarTareas();
+
+  // Cerrar el popup después de tachar todas las tareas
+  cerrarPopupTachar();
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -271,6 +415,8 @@ function filtrarTareas(estado) {
         </span>
 
       `;
+
+      
       taskList.appendChild(li);
     });
   }
@@ -281,6 +427,7 @@ function filtrarTareas(estado) {
 function editarTarea(index) {
   var tareas = JSON.parse(localStorage.getItem("tareas")) || [];
   var tarea = tareas[index];
+
 
   // Seleccionar la casilla específica de la tarea
   var taskItem = document.querySelectorAll(".task-item")[index];
@@ -311,6 +458,8 @@ function editarTarea(index) {
       }
       select.appendChild(option);
   });
+
+
 }
 
 
@@ -342,23 +491,6 @@ function cancelarEdicion(index) {
 
 
 
-// Escuchar el clic en el botón "Tachar todas las tareas"
-document.getElementById("button-tachar-task").addEventListener("click", tacharTodasTareas);
-
-function tacharTodasTareas() {
-    var tareas = JSON.parse(localStorage.getItem("tareas")) || [];
-    
-    // Cambiar el estado de todas las tareas a "completado"
-    tareas.forEach(function(tarea) {
-        tarea.estado = "completado";
-    });
-
-    // Guardar las tareas actualizadas en el localStorage
-    localStorage.setItem("tareas", JSON.stringify(tareas));
-
-    // Recargar las tareas para reflejar los cambios en la interfaz
-    cargarTareas();
-}
 
 
 
