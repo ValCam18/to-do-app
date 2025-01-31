@@ -32,8 +32,8 @@
 
 ## 📌 Mejoras Futuras
 
-🔹 Optimización de las funciones en JavaScript.
-🔹 Optimización de la hoja de estilos.
+🔹 Optimización de las funciones en JavaScript.<br>
+🔹 Optimización de la hoja de estilos.<br>
 🔹 Mejoras en la interfaz de usuario y animaciones.
 
 ## 🤝 Contribuciones
