@@ -396,8 +396,18 @@ function filtrarTareas(estado) {
 
   function actualizarListaTareas(tareas) {
     taskList.innerHTML = ""; // Limpiar la lista de tareas
+
+    var categorias = JSON.parse(localStorage.getItem('categorias')) || []; // Obtener las categorías
+     
   
     tareas.forEach(function(tarea, index) {
+
+      var categoriaObj = categorias.find(cat => cat.nombre === tarea.categoria); // Buscar la categoría en la lista
+      var colorCategoria = categoriaObj ? categoriaObj.color : "#000000"; // Obtener el color o usar negro por defecto
+
+
+
+
       var li = document.createElement("li");
       li.classList.add("task-item");
       li.innerHTML = `
@@ -405,7 +415,8 @@ function filtrarTareas(estado) {
           <input type="checkbox" id="task-${index}" ${tarea.estado === "completado" ? "checked" : ""} onchange="cambiarEstadoTarea(${index})">
           <label for="task-${index}" class="text-task ${tarea.estado === "completado" ? "task-completed" : ""}">${tarea.tarea}</label>
 
-          ${tarea.categoria ? `<span class="category-tag" >${tarea.categoria}</span>` : ""}
+          ${tarea.categoria ? `<span class="category-tag" style="background-color: ${colorCategoria}; ">${tarea.categoria}</span>` : ""}
+
 
         </span>
         <span class="task-actions">

@@ -252,18 +252,19 @@ ul.task-list {
 }
 
 
-
-
-
-
 .task-item:hover {
     box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
 }
 
 .category-tag {
-    margin-left: auto; /* Empuja la categoría hacia el extremo derecho */
-    text-align: right; /* Alinea el texto hacia la derecha dentro del span */
+    /* display: inline-block; */
+    padding: 2px 6px;
+    border-radius: 4px;
+    color: white;
 }
+
+
+
 
 #task-category{
     background-color: #6919F6;
