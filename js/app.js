@@ -117,29 +117,6 @@ function eliminarCategoria(index) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 function mostrarPopup(){
     document.getElementById("popup-add-task").style.display = "flex";
 }
@@ -177,11 +154,20 @@ function añadirTarea() {
 
 
 
+function mostrarPopupDelete(index){
+  // Obtener el nombre de la tarea usando el índice
+  var tareas = JSON.parse(localStorage.getItem("tareas")) || [];
+  var tareaNombre = tareas[index].tarea;
 
-
-function mostrarPopupDelete(){
   document.getElementById("popup-confirm-delete").style.display = "flex";
+
+  // Actualizar el texto del popup con el nombre de la tarea
+  document.getElementById("delete-text").innerHTML = `¿Estás seguro de que deseas eliminar la tarea: <strong>${tareaNombre}</strong>?`;
+  document.getElementById("button-delete-task-popup").setAttribute("data-index", index);
+
+
 }
+
 function cerrarPopupDelete(){
   document.getElementById("popup-confirm-delete").style.display = "none";
 
@@ -189,7 +175,9 @@ function cerrarPopupDelete(){
 
 
 function eliminarTarea(index) {
-      var tareas = JSON.parse(localStorage.getItem("tareas")) || []; // Obtenemos las tareas
+  var index = document.getElementById("button-delete-task-popup").getAttribute("data-index"); // Obtener el índice del atributo del botón
+    
+  var tareas = JSON.parse(localStorage.getItem("tareas")) || []; // Obtenemos las tareas
       tareas.splice(index, 1); // Eliminamos la tarea por el índice guardado
 
       localStorage.setItem("tareas", JSON.stringify(tareas));
@@ -197,14 +185,6 @@ function eliminarTarea(index) {
       actualizarContadores(); // Actualizar los contadores
       cerrarPopupDelete(); // Cerramos el popup
 }
-
-
-
-
-
-
-
-
 
 
 
