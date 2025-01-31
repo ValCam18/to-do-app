@@ -319,6 +319,8 @@ function filtrarTareas(estado) {
 
       var li = document.createElement("li");
       li.classList.add("task-item");
+      li.setAttribute("draggable", "true"); // Hacerlo arrastrable
+      li.dataset.index = index; // Añadir el índice de la tarea como dato
       li.innerHTML = `
         <span>
           <input type="checkbox" id="task-${index}" ${tarea.estado === "completado" ? "checked" : ""} onchange="cambiarEstadoTarea(${index})">
@@ -336,10 +338,76 @@ function filtrarTareas(estado) {
 
       `;
 
+      // Agregar eventos de drag
+      li.addEventListener("dragstart", (e) => handleDragStart(e));
+      li.addEventListener("dragover", (e) => handleDragOver(e));
+      li.addEventListener("drop", (e) => handleDrop(e));
+
       
       taskList.appendChild(li);
     });
   }
+
+
+
+
+
+  let draggedItem = null;
+
+function handleDragStart(e) {
+    draggedItem = e.target; // Guardar el elemento que está siendo arrastrado
+    e.target.style.opacity = 0.5; // Hacerlo transparente para indicar que está siendo arrastrado
+}
+
+function handleDragOver(e) {
+    e.preventDefault(); // Necesario para que el elemento pueda ser soltado
+    if (e.target && e.target.nodeName === "LI" && e.target !== draggedItem) {
+        // Cambiar el estilo visual del elemento que está debajo
+        e.target.style.border = "1px dashed #000";
+    }
+}
+
+function handleDrop(e) {
+    e.preventDefault();
+    if (e.target && e.target.nodeName === "LI" && e.target !== draggedItem) {
+        // Recuperar el índice de ambos elementos
+        let draggedIndex = draggedItem.dataset.index;
+        let targetIndex = e.target.dataset.index;
+
+        // Cambiar el lugar de las tareas en el array
+        let tareas = JSON.parse(localStorage.getItem('tareas')) || [];
+        let draggedTask = tareas[draggedIndex];
+        tareas.splice(draggedIndex, 1);
+        tareas.splice(targetIndex, 0, draggedTask); // Insertar la tarea arrastrada en la nueva posición
+
+        // Guardar la lista actualizada en el localStorage
+        localStorage.setItem('tareas', JSON.stringify(tareas));
+
+        // Actualizar la lista visualmente
+        actualizarListaTareas(tareas);
+    }
+
+    draggedItem.style.opacity = 1; // Restaurar la opacidad
+    e.target.style.border = "none"; // Restaurar el estilo visual del elemento de destino
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
