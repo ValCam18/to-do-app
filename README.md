@@ -8,6 +8,7 @@
 ✅ Asignar colores a las categorías con un **picker de color**.<br>
 ✅ Marcar tareas como completadas o pendientes.<br>
 ✅ Filtrar tareas por **categoría** o por estado (**Todas**, **Pendientes**, **Realizadas**).<br>
+✅ Drag and Drop de las tareas <br>
 ✅ Interfaz intuitiva con HTML, CSS y JavaScript puro.
 
 ## 🎨 Tecnologías Utilizadas
