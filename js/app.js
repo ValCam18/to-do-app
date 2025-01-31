@@ -101,7 +101,7 @@ function eliminarCategoria(index) {
 
 
 function actualizarSelectCategorias(categorias) {
-  var selectCategoria = document.getElementById('category-select');
+  const selectCategoria = document.getElementById('category-select');
 
   var opcionesHTML = '<option value="">Seleccionar...</option>';
 
@@ -115,7 +115,7 @@ function actualizarSelectCategorias(categorias) {
 
 
 function actualizarSelectCategoriasPopup(categorias) {
-  var selectCategoria = document.getElementById('category-select-task');
+  const selectCategoria = document.getElementById('category-select-task');
 
   var opcionesHTML = '<option value="">CATEGORIA</option>';
   
