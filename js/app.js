@@ -17,8 +17,6 @@ fecha.innerHTML = FECHA.toLocaleDateString("es-ES", {weekday:"long", month:"shor
 
 
 
-
-
 function añadirCategoria() {
   var categoria = document.getElementById('category-input').value;
   var color = document.getElementById('category-color').value;
@@ -102,45 +100,6 @@ function eliminarCategoria(index) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 function actualizarSelectCategorias(categorias) {
   var selectCategoria = document.getElementById('category-select');
 
@@ -167,15 +126,6 @@ function actualizarSelectCategoriasPopup(categorias) {
 
   selectCategoria.innerHTML = opcionesHTML;
 }
-
-
-
-
-
-
-
-
-
 
 
 
@@ -214,28 +164,6 @@ function añadirTarea() {
     cargarTareas();
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -312,25 +240,6 @@ function tacharTodasTareas() {
   // Cerrar el popup después de tachar todas las tareas
   cerrarPopupTachar();
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -474,7 +383,6 @@ function editarTarea(index) {
 }
 
 
-// opcionesHTML += `<option value="${categoria.nombre}">${categoria.nombre}</option>`;
 
 
 
@@ -512,8 +420,6 @@ function colorCategoria(){
 }
 
 
-
-
 var taskList = document.querySelector("#task-list");
 var searchInput = document.querySelector("#search-input"); // Utilizamos el ID directamente
 
@@ -541,8 +447,6 @@ searchInput.addEventListener("input", function(e) {
     }
   });
 });
-
-
 
 
 
