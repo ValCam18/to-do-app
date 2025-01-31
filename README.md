@@ -4,10 +4,10 @@
 
 ## 🚀 Características
 
-✅ Agregar tareas con nombre y categoría.
-✅ Asignar colores a las categorías con un **picker de color**.
-✅ Marcar tareas como completadas o pendientes.
-✅ Filtrar tareas por **categoría** o por estado (**Todas**, **Pendientes**, **Realizadas**).
+✅ Agregar tareas con nombre y categoría.<br>
+✅ Asignar colores a las categorías con un **picker de color**.<br>
+✅ Marcar tareas como completadas o pendientes.<br>
+✅ Filtrar tareas por **categoría** o por estado (**Todas**, **Pendientes**, **Realizadas**).<br>
 ✅ Interfaz intuitiva con HTML, CSS y JavaScript puro.
 
 ## 🎨 Tecnologías Utilizadas
@@ -32,15 +32,17 @@
 
 ## 📌 Mejoras Futuras
 
+🔹 Optimización de las funciones en JavaScript.
+🔹 Optimización de la hoja de estilos.
 🔹 Mejoras en la interfaz de usuario y animaciones.
 
 ## 🤝 Contribuciones
 
 ¡Las contribuciones son bienvenidas! Si quieres mejorar este proyecto, por favor sigue estos pasos:
 1. Haz un **fork** del repositorio.
-2. Crea una **rama** con tu nueva funcionalidad: `git checkout -b feature-nueva`.
+2. Crea una **rama** con tu nueva funcionalidad: `git branch rama-nueva`.
 3. Realiza los cambios y haz un **commit**: `git commit -m "Descripción de la mejora"`.
-4. Sube los cambios a tu fork: `git push origin feature-nueva`.
+4. Sube los cambios a tu fork: `git push origin rama-nueva`.
 5. Abre un **Pull Request**. 🚀
 
 
