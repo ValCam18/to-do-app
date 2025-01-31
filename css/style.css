@@ -163,6 +163,7 @@ section {
   justify-content: space-around;
   align-items: center; 
   height: auto ;
+
 } 
 
 hr.separator {
@@ -684,3 +685,99 @@ h2{
 
 
 
+
+
+
+/* RESPONSIVE */
+/* Estilo para pantallas pequeñas (móviles) */
+@media screen and (max-width: 768px) {
+    /* Ajuste de la grid para móviles */
+    .grid {
+        display: grid;
+        grid-template-columns: 1fr; /* Una columna para móviles */
+        grid-template-areas:
+            "top-section"
+            "task-section"
+            "category-section";
+        gap: 20px; /* Espacio entre los elementos */
+    }
+
+    #top-section {
+        display: block;
+        text-align: center;
+        order: 1; /* Aseguramos que 'top-section' sea primero */
+    }
+
+    #task-section {
+        display: block;
+        text-align: center;
+        order: 2; /* 'task-section' será el segundo */
+        margin-top: 100px; /* Empuja el task-section hacia abajo */
+    }
+
+    #category-section {
+        display: block;
+        text-align: center;
+        order: 3; /* 'category-section' será el tercero */
+    }
+
+    /* Ajuste en los botones de filtro */
+    .filter-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .filter-button {
+        width: 100%; /* Los botones de filtro ocupan todo el ancho */
+    }
+
+    /* Asegurar que los elementos de la búsqueda se ajusten bien */
+    #task-search {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #search-input, #category-select {
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    #button-add-task {
+        width: 100%; /* El botón de añadir tarea ocupa todo el ancho */
+        font-size: 1rem;
+        padding: 12px;
+        margin: 15px auto;
+    }
+
+    .popup-content {
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    /* Ajuste en los botones de categoría */
+    #category-form input {
+        width: 100%;
+    }
+
+    #button-add-category {
+        width: 100%;
+    }
+}
+
+/* Estilo para pantallas muy pequeñas (móviles de tamaño pequeño) */
+@media screen and (max-width: 480px) {
+    h1 {
+        font-size: 30px;
+    }
+
+    #search-input {
+        padding: 10px 15px;
+    }
+
+    .filter-button {
+        font-size: 0.9rem;
+    }
+
+    
+}
