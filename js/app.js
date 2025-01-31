@@ -16,28 +16,7 @@ fecha.innerHTML = FECHA.toLocaleDateString("es-ES", {weekday:"long", month:"shor
 
 
 
-// function añadirCategoria() {
-//     var categoria = document.getElementById('category-input').value;
 
-
-//     if (categoria.trim() !== "") {
-
-//         var categorias = JSON.parse(localStorage.getItem('categorias')) || [];
-
-//         categorias.push(categoria);
-
-//         localStorage.setItem('categorias', JSON.stringify(categorias));
-
-//         document.getElementById('category-input').value = "";
-
-//         actualizarLista(categorias);
-
-      
-
-//     } else {
-//         alert('Por favor, introduce una categoría.');
-//     }
-// }
 
 
 function añadirCategoria() {
@@ -86,24 +65,6 @@ function actualizarLista(categorias) {
 
 
 
-// function actualizarLista(categorias) {
-//     var categoriasLista = document.getElementById("lista_categorias");
-//     categoriasLista.innerHTML = "";
-
-//     // Crear el HTML para cada categoría y agregarla al contenedor
-//     // <li class="category-item">Categoría 1 <button id="button-delete-category">Eliminar</button></li>
-
-//     categorias.forEach(function(categoria, index) {
-//         var categoriaItemHTML = `
-//             <li class="category-item">
-//                 ${categoria} 
-//                 <button  id="button-delete-category" class="button-delete-category" onclick="eliminarCategoria(${index})">Eliminar</button>
-//             </li>
-//         `;
-//         categoriasLista.innerHTML += categoriaItemHTML;
-//     });
-
-// }
 
 
 function actualizarSelectCategorias(categorias) {
@@ -136,32 +97,6 @@ function actualizarSelectCategoriasPopup(categorias) {
 
 
 
-// function actualizarSelectCategorias(categorias) {
-//     var selectCategoria = document.getElementById('category-select');
-
-//     var opcionesHTML = '<option value="">Seleccionar...</option>';
-
-//     categorias.forEach(function(categoria) {
-//         opcionesHTML += `<option value="${categoria}">${categoria}</option>`;
-//     });
-
-//     selectCategoria.innerHTML = opcionesHTML;
-// }
-
-
-
-// function actualizarSelectCategoriasPopup(categorias) {
-//     var selectCategoria = document.getElementById('category-select-task');
-
-//     var opcionesHTML = '<option value="">CATEGORIA</option>';
-    
-
-//     categorias.forEach(function(categoria) {
-//         opcionesHTML += `<option value="${categoria}">${categoria}</option>`;
-//     });
-
-//     selectCategoria.innerHTML = opcionesHTML;
-// }
 
 
 function eliminarCategoria(index) {
@@ -176,6 +111,34 @@ function eliminarCategoria(index) {
     actualizarSelectCategoriasPopup(categorias)
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 function mostrarPopup(){
     document.getElementById("popup-add-task").style.display = "flex";
@@ -214,14 +177,39 @@ function añadirTarea() {
 
 
 
-function eliminarTarea(index) {
-    var tareas = JSON.parse(localStorage.getItem("tareas")) || [];
-    tareas.splice(index, 1);
 
-    localStorage.setItem("tareas", JSON.stringify(tareas));
-    filtrarTareas("todas"); // Recargar todas las tareas después de eliminar
-    actualizarContadores(); // Actualizar los contadores
+
+function mostrarPopupDelete(){
+  document.getElementById("popup-confirm-delete").style.display = "flex";
 }
+function cerrarPopupDelete(){
+  document.getElementById("popup-confirm-delete").style.display = "none";
+
+}
+
+
+function eliminarTarea(index) {
+      var tareas = JSON.parse(localStorage.getItem("tareas")) || []; // Obtenemos las tareas
+      tareas.splice(index, 1); // Eliminamos la tarea por el índice guardado
+
+      localStorage.setItem("tareas", JSON.stringify(tareas));
+      filtrarTareas("todas"); // Recargar todas las tareas después de eliminar
+      actualizarContadores(); // Actualizar los contadores
+      cerrarPopupDelete(); // Cerramos el popup
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 function cambiarEstadoTarea(index) {
     var tareas = JSON.parse(localStorage.getItem("tareas")) || [];
@@ -231,27 +219,6 @@ function cambiarEstadoTarea(index) {
     filtrarTareas("todas"); // Recargar todas las tareas después de cambiar el estado
     actualizarContadores(); // Actualizar los contadores
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -319,7 +286,8 @@ function filtrarTareas(estado) {
         </span>
         <span class="task-actions">
                 <button id="button-edit-task" onclick="editarTarea(${index})" ${tarea.estado === "completado" ? "disabled" : ""}>Editar</button>
-                <button id="button-delete-task" onclick="eliminarTarea(${index})">Eliminar</button>
+                <button id="button-delete-task" onclick="mostrarPopupDelete(${index})">Eliminar</button>
+
         </span>
 
       `;
@@ -327,53 +295,6 @@ function filtrarTareas(estado) {
     });
   }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  // class="category-item" style="color: ${categoria.color};">
-  //         ${categoria.nombre}
-
-
-
-
-// Función editar tareas
-// function editarTarea(index) {
-//   var tareas = JSON.parse(localStorage.getItem("tareas")) || [];
-//   var tarea = tareas[index];
-//   var tareaInput = prompt("Editar tarea:", tarea.tarea);
-//   if (tareaInput !== null && tareaInput.trim() !== "") {
-//       tareas[index].tarea = tareaInput.trim();
-//       localStorage.setItem("tareas", JSON.stringify(tareas));
-//       cargarTareas();
-// }
-//   }
 
 
 
@@ -441,10 +362,6 @@ function cancelarEdicion(index) {
 
 
 
-
-
-
-
 // Escuchar el clic en el botón "Tachar todas las tareas"
 document.getElementById("button-tachar-task").addEventListener("click", tacharTodasTareas);
 
@@ -465,42 +382,11 @@ function tacharTodasTareas() {
 
 
 
-
 // FUNCION ICONO COMO PICKER COLOR CATEGORIA
 
 function colorCategoria(){
   var color = document.getElementById("category-color").click();
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -589,8 +475,3 @@ document.getElementById("filter-done").addEventListener("click", function() {
 
 
 
-
-
-
-
-// SELECCIONAR COLOR EN CATEGORIA
