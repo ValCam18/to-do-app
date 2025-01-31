@@ -1,4 +1,4 @@
-# 📌 To-Do List con Categorías y Filtros
+# 📌 To-Do List
 
 ¡Bienvenido/a a **To-Do List**! 📝✨ Un proyecto simple pero funcional para gestionar tareas de manera eficiente.
 
@@ -17,6 +17,7 @@
 - **JavaScript** → Lógica de interacción y manipulación del DOM.
 
 ## 📸 Capturas de Pantalla
+![image](https://github.com/user-attachments/assets/1e3b67d9-d9ba-422e-8512-7586aaa1f15e)
 
 
 
